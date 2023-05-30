@@ -1,0 +1,74 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+  
+    body {
+        background-image: url("map-maps-world-wallpaper-preview.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-size: 100% 100%;
+    }
+    
+    #verifier {
+        width : 20px;
+        height : 20px;
+        text-align:center;
+    }
+    #site{
+        font-family: Montserrat;
+        font-size: 40px;
+        font-weight: 900;
+        text-align: left;  
+    }
+
+    #drapeau{
+        display: block;
+        margin-top: auto;
+        margin-left: auto;
+        width: 50%;
+        width : 600px;
+        height : 600px; 
+    }
+
+</style>
+
+<div id="site">
+
+    <img id="drapeau">
+
+    <label for="name" style="position: relative; left: 200px; top: -300px; background-color: beige;">Quel est ce pays?</label>
+
+    <input type="text" id="name" name="name" style="position: relative; left: 0px;top: -250px;" required>
+
+    <button onclick="myFunction()" id="verifier"></button>
+</div>
+
+<script src="./pays.js"></script>
+
+<script>
+    var rand = Math.floor(Math.random()*list.length);
+    // rand = numéro de l'élément ex. 25
+    var rValue = list[rand];
+    // rValue est le 25ème el de la liste
+    const img = document.getElementById('drapeau');
+    img.src=rValue.image
+    var myFunction = function () {
+        const val = document.querySelector('input').value;
+        if (val.toLowerCase() == rValue.name.toLowerCase()) {
+            const btn = document.getElementById('verifier');
+
+            btn.style.backgroundColor = 'green';
+        }
+        else {
+            const btn = document.getElementById('verifier');
+            btn.style.backgroundColor = 'red';
+        }
+        rand = Math.floor(Math.random()*list.length);
+        rValue = list[rand];
+        img.src=rValue.image
+        document.querySelector('input').value='';
+
+    }
+
+</script>
